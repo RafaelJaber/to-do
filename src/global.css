@@ -15,6 +15,12 @@
     --font-principal: Inter;
 }
 
+:focus {
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--purple-500);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -30,4 +36,24 @@ body, input, textarea, button {
     font-family: var(--font-principal), sans-serif;
     font-weight: 400;
     font-size: 1rem;
+}
+
+input[type='text'] {
+    border-radius: 8px;
+    background: var(--gray-500);
+    padding: 1rem;
+    border: 1px solid var(--gray-700);
+    color: var(--gray-100);
+}
+
+button {
+    background: var(--blue-500);
+    padding: 1rem;
+    color: var(--gray-100);
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
 }

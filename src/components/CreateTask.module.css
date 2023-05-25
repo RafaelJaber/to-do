@@ -1,0 +1,16 @@
+.addTask {
+    align-items: center;
+    margin-top: -1.6875rem;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.addTask input[type='text'] {
+    width: 60%;
+}
+
