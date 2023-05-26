@@ -8,11 +8,13 @@ import styles from './Task.module.css';
 
 interface TaskProps {
     task: TaskModel,
-    onDeleteTask: (task: TaskModel) => void
+    onDeleteTask: (task: TaskModel) => void,
+    onHandleChangeTask: (task: TaskModel) => void,
+    onHandleUpdateTask: () => void
 }
 
 
-export function Task({ task, onDeleteTask }: TaskProps) {
+export function Task({ task, onDeleteTask, onHandleChangeTask, onHandleUpdateTask}: TaskProps) {
     const [isChecked, setIsChecked] =
         useState(returnCheckedStatus(task.taskState));
     const [isDone, setIsDone] =
@@ -35,6 +37,9 @@ export function Task({ task, onDeleteTask }: TaskProps) {
         setIsChecked((state: boolean) => {
             const result = !state;
             setIsDone(returnClasseTaskDone(result));
+            task.taskState = result ? TaskState.Done : TaskState.Default
+            onHandleChangeTask(task);
+            onHandleUpdateTask();
             return result;
         });
 

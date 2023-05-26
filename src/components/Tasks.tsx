@@ -2,13 +2,17 @@ import styles from './Tasks.module.css';
 import clipboardIcon from '../assets/clipboard.svg';
 import { TaskModel } from "../models/TaskModel.ts";
 import { Task } from "./Task.tsx";
+import { TaskState } from "../models/TaskState.ts";
+import { useState } from "react";
 
 interface TasksProps {
     tasks: TaskModel[],
-    onDeleteTask: (task: TaskModel) => void
+    onDeleteTask: (task: TaskModel) => void,
+    onHandleChangeTask: (task: TaskModel) => void
 }
 
-export function Tasks({ tasks, onDeleteTask }: TasksProps) {
+export function Tasks({ tasks, onDeleteTask, onHandleChangeTask }: TasksProps) {
+    const [tasksDone, setTasksDone] = useState(0);
 
     function haveTasks(tasks: TaskModel[]) {
         if (tasks.length > 0) {
@@ -20,6 +24,8 @@ export function Tasks({ tasks, onDeleteTask }: TasksProps) {
                                 task={ item }
                                 key={ item.id }
                                 onDeleteTask={onDeleteTask}
+                                onHandleChangeTask={onHandleChangeTask}
+                                onHandleUpdateTask={handleUpdateTask}
                             />
                         )
                     }) }
@@ -40,12 +46,29 @@ export function Tasks({ tasks, onDeleteTask }: TasksProps) {
         }
     }
 
+    function amountOfTasks(): number {
+        return tasks.length;
+    }
+
+    function handleUpdateTask(): void {
+        setTasksDone(amountOfTasksDones);
+    }
+
+    function amountOfTasksDones(): number {
+       return tasks.filter(task => {
+           return task.taskState === TaskState.Done
+       }).length;
+
+    }
 
     return (
         <div className={ styles.tasks }>
             <header className={ styles.header }>
-                <p className={ styles.createdTaskParagraph }>Tarefas criadas <span>0</span></p>
-                <p className={ styles.paragraphTasksCompleted }>Concluídas <span>0</span></p>
+                <p className={ styles.createdTaskParagraph }>Tarefas criadas <span>{amountOfTasks()}</span></p>
+                <p className={ styles.paragraphTasksCompleted }>
+                    Concluídas {' '}
+                    <span>{`${tasksDone} de ${amountOfTasks()}`}</span>
+                </p>
             </header>
             <div className={ styles.tasksList }>
                 { haveTasks(tasks) }

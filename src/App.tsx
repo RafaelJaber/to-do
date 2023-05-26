@@ -23,6 +23,16 @@ function App() {
         setTasks([...tasks, createTask(content)])
     }
 
+    function handleChangeTask(task: TaskModel) {
+        const toChangeTask = tasks.findIndex(item => {
+            return item.id === task.id;
+        });
+        tasks[toChangeTask].taskState = task.taskState;
+        tasks.sort((a:TaskModel, b:TaskModel): number => a.taskState < b.taskState
+            ? -1 : a.taskState > b.taskState ? 1 : 0)
+        setTasks(tasks);
+    }
+
     function deleteTask(taskToDelete: TaskModel){
         const tasksWithoutDeletedOne = tasks.filter(task => {
             return task.id !== taskToDelete.id
@@ -38,7 +48,11 @@ function App() {
                 <CreateTask
                     onHandleCreateTask={handleCreateTask}
                 />
-                <Tasks tasks={ tasks } onDeleteTask={deleteTask}/>
+                <Tasks
+                    tasks={ tasks }
+                    onDeleteTask={deleteTask}
+                    onHandleChangeTask={handleChangeTask}
+                />
             </div>
         </div>
     )
