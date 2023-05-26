@@ -1,6 +1,7 @@
 
 :root {
     --blue-300: #4EA8DE;
+    --blue-400: rgba(33, 150, 243, 0.35);
     --blue-500: #1E6F9F;
     --purple-300: #8284FA;
     --purple-500: #5E60CE;
@@ -56,4 +57,10 @@ button {
     align-items: center;
     gap: 0.5rem;
     font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+
+button:hover {
+    background: var(--blue-300);
 }

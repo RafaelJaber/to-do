@@ -1,0 +1,94 @@
+.task {
+    display: flex;
+    padding: 1rem;
+    background: var(--gray-500);
+    gap: 0.75rem;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+.task + .task {
+    margin-top: 0.75rem;
+}
+
+.task p {
+    color: var(--gray-100);
+    user-select: none;
+}
+
+.taskDone p{
+    color: var(--gray-300);
+    text-decoration: line-through;
+}
+
+.content {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.checkbox {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.checkbox label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid var(--blue-300);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    transition: all 0.1s;
+}
+
+.checkbox label:hover {
+    background: var(--blue-400);
+}
+
+.checkboxIcon {
+    position: absolute;
+    right: 4px;
+    color: var(--gray-100);
+    background: transparent;
+    opacity: 0;
+    transition: all 0.15s;
+}
+
+.checkbox input[type="checkbox"]:checked + label .checkboxIcon {
+    opacity: 1
+}
+
+.checkbox input[type="checkbox"]:checked + label {
+    background: var(--purple-500);
+    border-color: var(--purple-500);
+}
+
+.checkbox input[type="checkbox"]:checked + label:hover {
+    background: var(--purple-300);
+    border-color: var(--purple-300);
+}
+
+.btnIcon {
+    background: none;
+    padding: 0.25rem;
+    border-radius: 4px;
+    line-height: 0;
+    height: 2.25rem;
+    transition: background-color 0.1s, color 0.1s;
+    cursor: pointer;
+    color: var(--gray-300);
+}
+
+.btnIcon:hover {
+    background: var(--gray-400);
+    color: var(--red-500);
+}
