@@ -23,6 +23,13 @@ function App() {
         setTasks([...tasks, createTask(content)])
     }
 
+    function deleteTask(taskToDelete: TaskModel){
+        const tasksWithoutDeletedOne = tasks.filter(task => {
+            return task.id !== taskToDelete.id
+        });
+        setTasks(tasksWithoutDeletedOne);
+    }
+
 
     return (
         <div>
@@ -31,7 +38,7 @@ function App() {
                 <CreateTask
                     onHandleCreateTask={handleCreateTask}
                 />
-                <Tasks tasks={ tasks }/>
+                <Tasks tasks={ tasks } onDeleteTask={deleteTask}/>
             </div>
         </div>
     )

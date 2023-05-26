@@ -4,17 +4,24 @@ import { TaskModel } from "../models/TaskModel.ts";
 import { Task } from "./Task.tsx";
 
 interface TasksProps {
-    tasks: TaskModel[]
+    tasks: TaskModel[],
+    onDeleteTask: (task: TaskModel) => void
 }
 
-export function Tasks({ tasks }: TasksProps) {
+export function Tasks({ tasks, onDeleteTask }: TasksProps) {
 
     function haveTasks(tasks: TaskModel[]) {
         if (tasks.length > 0) {
             return (
                 <div>
                     { tasks.map((item: TaskModel) => {
-                        return <Task task={ item } key={ item.id }/>
+                        return (
+                            <Task
+                                task={ item }
+                                key={ item.id }
+                                onDeleteTask={onDeleteTask}
+                            />
+                        )
                     }) }
                 </div>
             )

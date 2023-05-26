@@ -7,11 +7,12 @@ import styles from './Task.module.css';
 
 
 interface TaskProps {
-    task: TaskModel
+    task: TaskModel,
+    onDeleteTask: (task: TaskModel) => void
 }
 
 
-export function Task({ task }: TaskProps) {
+export function Task({ task, onDeleteTask }: TaskProps) {
     const [isChecked, setIsChecked] =
         useState(returnCheckedStatus(task.taskState));
     const [isDone, setIsDone] =
@@ -39,6 +40,10 @@ export function Task({ task }: TaskProps) {
 
     }
 
+    function handleDeleteTask() {
+        onDeleteTask(task);
+    }
+
 
     return (
         <div className={ isDone }>
@@ -53,7 +58,10 @@ export function Task({ task }: TaskProps) {
                 </div>
                 <p onClick={handleOnChange}>{ task.content }</p>
             </div>
-            <button className={ styles.btnIcon }>
+            <button
+                className={ styles.btnIcon }
+                onClick={handleDeleteTask}
+            >
                 <Trash size={ 24 }/>
             </button>
         </div>
