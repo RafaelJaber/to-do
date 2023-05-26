@@ -1,24 +1,13 @@
 import styles from './Tasks.module.css';
 import clipboardIcon from '../assets/clipboard.svg';
 import { TaskModel } from "../models/TaskModel.ts";
-import { TaskState } from "../models/TaskState.ts";
 import { Task } from "./Task.tsx";
 
-const tasks: TaskModel[] = [
-    {
-        id: 1,
-        taskState: TaskState.Default,
-        content: 'Implementar a bagaceira da listagem de tarefas'
-    },
-    {
-        id: 2,
-        taskState: TaskState.Done,
-        content: 'Estudo modulo 1 ignite'
-    }
-]
+interface TasksProps {
+    tasks: TaskModel[]
+}
 
-
-export function Tasks() {
+export function Tasks({ tasks }: TasksProps) {
 
     function haveTasks(tasks: TaskModel[]) {
         if (tasks.length > 0) {
@@ -43,6 +32,7 @@ export function Tasks() {
             )
         }
     }
+
 
     return (
         <div className={ styles.tasks }>
