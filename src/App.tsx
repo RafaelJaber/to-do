@@ -1,6 +1,8 @@
 import { Header } from "./components/Header.tsx";
 import { CreateTask } from "./components/CreateTask.tsx";
+import { Tasks } from "./components/Tasks.tsx";
 
+import styles from './App.module.css';
 
 function App() {
 
@@ -8,7 +10,10 @@ function App() {
     return (
         <div>
             <Header/>
-            <CreateTask/>
+            <div className={ styles.content }>
+                <CreateTask/>
+                <Tasks/>
+            </div>
         </div>
     )
 }

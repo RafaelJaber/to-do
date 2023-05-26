@@ -1,0 +1,45 @@
+.tasks {
+    margin: 4rem auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.createdTaskParagraph  {
+    color: var(--blue-300);
+}
+
+.paragraphTasksCompleted {
+    color: var(--purple-500);
+}
+
+.header p span {
+    background: var(--gray-400);
+    color: var(--gray-200);
+    padding: 0.125rem 0.5rem;
+    border-radius: 10px;
+}
+
+.tasksList {}
+
+.noItem {
+    border-top: 1px solid var(--gray-300);
+    border-radius: 8px;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noItem img {
+    margin-bottom: 1rem;
+}
+
+.paragraphBold {
+    font-weight: 700;
+    line-height: 1.2;
+}
