@@ -47,6 +47,7 @@ export function Task({ task, onDeleteTask, onHandleChangeTask, onHandleUpdateTas
 
     function handleDeleteTask() {
         onDeleteTask(task);
+        onHandleUpdateTask();
     }
 
 
